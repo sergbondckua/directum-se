@@ -6,10 +6,10 @@ from typing import List
 class Config:
     """Клас конфігурації для додатку."""
 
-    browser: str = "chrome"
+    browser: str = "firefox"
     url: str = "https://drx.const.dp.ua"
     headless: bool = False
-    arguments_options: List[str] = field(default_factory=lambda: [
+    chrome_args_options: List[str] = field(default_factory=lambda: [
         "--no-sandbox",
         "--ignore-certificate-errors",
         "--ignore-ssl-errors",
@@ -18,4 +18,18 @@ class Config:
         "--ignore-certificate-errors-spki-list",
         "--disable-web-security",
     ])
+    firefox_args_options: List[str] = field(default_factory=lambda: [
+        "--no-sandbox",
+        "--allow-running-insecure-content",
+    ])
+
+    firefox_prefs: dict = field(default_factory=lambda: {
+        "network.stricttransportsecurity.preloadlist": False,
+        "security.enterprise_roots.enabled": True,
+        "security.mixed_content.block_active_content": False,
+        "security.mixed_content.block_display_content": False,
+        "webdriver_accept_untrusted_certs": True,
+        "webdriver_assume_untrusted_issuer": False,
+    })
+
 

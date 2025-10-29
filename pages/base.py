@@ -3,6 +3,8 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
+from utils.logger import log_action
+
 
 class BasePage:
     """Базова сторінка."""
@@ -10,6 +12,7 @@ class BasePage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
+    @log_action
     def open(self, url: str):
         """
         Відкриття веб-сторінки.
@@ -20,6 +23,7 @@ class BasePage:
 
         self.driver.get(url)
 
+    @log_action
     def find(self, locator: tuple[str, str], timeout: int = 5) -> WebElement:
         """
         Пошук елемента на сторінці.
@@ -36,6 +40,7 @@ class BasePage:
             ec.presence_of_element_located(locator)
         )
 
+    @log_action
     def click(self, locator: tuple[str, str]):
         """
         Клік на елемент.
@@ -48,6 +53,7 @@ class BasePage:
         # Клік на елемент
         element.click()
 
+    @log_action
     def typing(self, locator: tuple[str, str], text: str):
         """
         Введення тексту.
