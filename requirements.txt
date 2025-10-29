@@ -1,1 +1,2 @@
+environs~=14.3.0
 selenium~=4.38.0

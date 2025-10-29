@@ -16,7 +16,11 @@ class WebDriverSingleton:
 
             options = webdriver.ChromeOptions()
             if config.headless:
-                options.add_argument("--headless")
+                options.add_argument("--headless=new")
+
+            # Додавання додаткових аргументів
+            for argument in config.arguments_options:
+                options.add_argument(argument)
 
             cls._driver = webdriver.Chrome(options=options)
             cls._driver.maximize_window()
