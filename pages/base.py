@@ -41,6 +41,10 @@ class BasePage:
         )
 
     @log_action
+    def find_all(self, locator: tuple[str, str]):
+        return self.driver.find_elements(*locator)
+
+    @log_action
     def click(self, locator: tuple[str, str]):
         """
         Клік на елемент.

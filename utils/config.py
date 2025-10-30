@@ -6,7 +6,7 @@ from typing import List
 class Config:
     """Клас конфігурації для додатку."""
 
-    browser: str = "firefox"
+    browser: str = "chrome"
     url: str = "https://drx.const.dp.ua"
     headless: bool = False
     chrome_args_options: List[str] = field(default_factory=lambda: [

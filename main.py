@@ -26,5 +26,8 @@ with WebDriverBrowser(factory, config).get_driver() as driver:
     login_page = LoginPage(driver)  # ініціалізація сторінки авторизації
     login_page.auth(env.str("LOGIN"), env.str("PASSWORD"))  # авторизація
     create_order_page = CreateOrderPage(driver)
-    create_order_page.press_btn_create()
+    create_order_page.press_on_btn_create()
+    create_order_page.press_cashless_payment()
+    create_order_page.press_add_new_obj()
+    create_order_page.press_create_new()
     time.sleep(15)
