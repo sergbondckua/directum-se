@@ -5,6 +5,7 @@ from drivers.browser import (
     WebDriverBrowser,
     ChromeWebDriverFactory,
 )
+from pages.cashless_card import CashlessCard
 from pages.create_order import CreateOrderPage
 from pages.login import LoginPage
 
@@ -23,11 +24,16 @@ factory = (
     else ChromeWebDriverFactory()
 )
 with WebDriverBrowser(factory, config).get_driver() as driver:
-    login_page = LoginPage(driver)  # ініціалізація сторінки авторизації
-    login_page.auth(env.str("LOGIN"), env.str("PASSWORD"))  # авторизація
+    # Авторизація
+    login_page = LoginPage(driver)
+    login_page.auth(env.str("LOGIN"), env.str("PASSWORD"))
+
+    # Створення заявки
     create_order_page = CreateOrderPage(driver)
-    create_order_page.press_on_btn_create()
-    create_order_page.press_cashless_payment()
-    create_order_page.press_add_new_obj()
-    create_order_page.press_create_new()
+    create_order_page.creator()
+
+    # Створення безготівкового рахунка
+    cashless_card_page = CashlessCard(driver)
+    cashless_card_page.create_from_file()
+
     time.sleep(15)
