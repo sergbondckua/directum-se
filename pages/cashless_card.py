@@ -19,5 +19,21 @@ class CashlessCard(BasePage):
         #         "//span[contains(@class, 'ribbon-item__text') and text()='Создать из файла']",
         #     )
         # )
-        file = self.find((By.XPATH, "//input[@type='file']"))
-        file.send_keys("/path/to/file")
+        pathname = "/path/to/file"
+        self.typing((By.XPATH, "//input[@type='file']"), pathname)
+
+    def type_document_field(self):
+        """Заповнює поле Вид документа"""
+
+        self.typing(
+            (
+                By.XPATH,
+                "//label[text()='Вид документа']/parent::div/following-sibling::div//input[@role='combobox']",
+            ),
+            "Безналичный счет",
+        )
+
+    def curator_field(self):
+        """Заповнює поле Куратор"""
+
+        pass

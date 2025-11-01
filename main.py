@@ -34,6 +34,6 @@ with WebDriverBrowser(factory, config).get_driver() as driver:
 
     # Створення безготівкового рахунка
     cashless_card_page = CashlessCard(driver)
-    cashless_card_page.create_from_file()
-
+    # cashless_card_page.create_from_file()
+    cashless_card_page.type_document_field()
     time.sleep(15)

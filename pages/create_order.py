@@ -11,6 +11,7 @@ class CreateOrderPage(BasePage):
 
     def _press_on_btn_create(self):
         """Клік на кнопку створення задачі."""
+
         self.click(
             (
                 By.XPATH,
@@ -20,20 +21,25 @@ class CreateOrderPage(BasePage):
 
     def _press_cashless_payment(self):
         """Клік на кнопку створення заявки на безготівкову оплату."""
+
         self.click(
             (By.CSS_SELECTOR, '[title="Создать заявка на безналичную оплату"]')
         )
 
     def _press_add_new_obj(self):
-        """Клік на кнопку додавання нового об'єкту."""
+        """Клік на кнопку додавання нового об'єкта."""
+
         self.click(
             (
                 By.XPATH,
-                "//div[contains(@class, 'attachment-group__title') and text()='Заявка на безналичную оплату']/ancestor::div[@class='attachment-group attachments__attachment-group']//span[text()='Добавить']",
+                "//div[contains(@class, 'attachment-group__title_required')]"
+                "/parent::div/following-sibling::div//span[text()='Добавить']",
             )
         )
 
     def _press_create_new(self):
+        """Клік на кнопку створення об'єкта"""
+
         self.click(
             (
                 By.XPATH,
